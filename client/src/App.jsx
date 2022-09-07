@@ -1,5 +1,6 @@
 import styles from './App.module.scss';
 import Achievements from './components/Achievements/Achievements';
+import CompletedChallenges from './components/CompletedChallenges/CompletedChallenges';
 import FreshIdeas from './components/FreshIdeas/FreshIdeas';
 import IdeasList from './components/IdeasList/IdeasList';
 
@@ -9,6 +10,7 @@ function App() {
       <FreshIdeas />
       <IdeasList />
       <Achievements />
+      <CompletedChallenges />
 
     </div>
   );
