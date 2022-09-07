@@ -1,0 +1,27 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100px;
+  max-width: 250px;
+  padding: 5px 0;
+  background-color: #fefae0;
+  color: #bc6c25;
+}
+
+.task {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  padding: 0 5px;
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-top: 2px dotted #283618;
+}

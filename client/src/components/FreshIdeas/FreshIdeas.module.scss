@@ -2,11 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #0077b6;
+  background-color: #bc6c25;
   width: 100%;
+  padding-bottom: 50px;
 }
 
 .heading {
   font-size: 2em;
-  color: #caf0f8;
+  color: #fefae0;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 80%;
+
 }
