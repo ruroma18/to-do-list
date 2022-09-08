@@ -9,7 +9,7 @@ const IdeasList = () => {
   const slidetSetting = {
     centerMode: true,
     infinite: true,
-    centerPadding: "-1%",
+    centerPadding: "-6%",
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,

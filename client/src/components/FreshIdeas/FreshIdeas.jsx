@@ -2,15 +2,15 @@ import React from "react";
 import IdeaCard from "../IdeaCard/IdeaCard";
 import styles from "./FreshIdeas.module.scss";
 
-const FreshIdeas = () => {
+
+const FreshIdeas = ({ideas}) => {
+  console.log(ideas)
+
   return (
     <section className={styles.container}>
       <h2 className={styles.heading}>Choose fresh ideas to do</h2>
       <div className={styles.cardContainer}>
-        <IdeaCard />
-        <IdeaCard />
-        <IdeaCard />
-        <IdeaCard />
+        {ideas.map((idea) => <IdeaCard key={idea.key} task={idea.activity} type={idea.type} />)}
       </div>
 
     </section>
