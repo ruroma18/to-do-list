@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./IdeasList.module.scss";
 
-const IdeasList = () => {
+const IdeasList = ({ myIdeas }) => {
   const slidetSetting = {
     centerMode: true,
     infinite: true,
@@ -19,12 +19,15 @@ const IdeasList = () => {
     <section className={styles.container}>
       <h2 className={styles.heading}>Idea in my list</h2>
       <div className={styles.sliderWrapper}>
-        <Slider className={styles.slickList} {...slidetSetting}>
-          <IdeaCard />
-          <IdeaCard />
-          <IdeaCard />
-          <IdeaCard />
-        </Slider>
+        {myIdeas.length === 0 ? (
+          <div>No ideas in your list</div>
+        ) : (
+          <Slider className={styles.slickList} {...slidetSetting}>
+            {myIdeas.map((idea) => (
+              <IdeaCard key={idea.key} task={idea.activity} type={idea.type} />
+            ))}
+          </Slider>
+        )}
       </div>
     </section>
   );
