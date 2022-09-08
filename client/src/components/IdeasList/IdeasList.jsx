@@ -4,15 +4,26 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./IdeasList.module.scss";
+import "./slider.css";
 
-const IdeasList = ({ myIdeas }) => {
-  const slidetSetting = {
+const IdeasList = ({ myIdeas, setMyIdeas }) => {
+  
+  const changeVisability = (current) => {
+    const newMyIdeas = myIdeas.map((idea, index) => ({
+      ...idea,
+      isCurrent: index === current ? idea.isCurrent = true : idea.isCurrent = false,
+    }));
+    return setMyIdeas(newMyIdeas);
+  };
+
+  const slideSetting = {
     centerMode: true,
-    infinite: true,
-    centerPadding: "-6%",
+    infinite: false,
+    centerPadding: "33%",
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
+    afterChange: (current) => changeVisability(current),
   };
 
   return (
@@ -22,9 +33,14 @@ const IdeasList = ({ myIdeas }) => {
         {myIdeas.length === 0 ? (
           <div>No ideas in your list</div>
         ) : (
-          <Slider className={styles.slickList} {...slidetSetting}>
+          <Slider {...slideSetting}>
             {myIdeas.map((idea) => (
-              <IdeaCard key={idea.key} task={idea.activity} type={idea.type} />
+              <IdeaCard
+                key={idea.key}
+                task={idea.activity}
+                type={idea.type}
+                isCurrent={idea.isCurrent}
+              />
             ))}
           </Slider>
         )}

@@ -14,12 +14,12 @@ function App() {
     if (ideas.length < 4) {
       getTask().then((data) => setIdeas([...ideas, data]));
     }
-  }, [ideas.length, myIdeas.length, ideas]);
+  }, [ideas.length, ideas]);
 
   const addTaskToList = (taskKey) => {
     ideas.map((idea, i) => {
       if (taskKey === idea.key) {
-        setMyIdeas([...myIdeas, idea]);
+        setMyIdeas([...myIdeas, {...idea, isDone: false, isCurrent: false}]);
         ideas.splice(i, 1);
       }
       return ideas
@@ -29,7 +29,7 @@ function App() {
   return (
     <div className={styles.container}>
       <FreshIdeas ideas={ideas} addTaskToList={addTaskToList} />
-      <IdeasList myIdeas={myIdeas} />
+      <IdeasList myIdeas={myIdeas} setMyIdeas={setMyIdeas} />
       <Achievements />
       <CompletedChallenges />
     </div>
