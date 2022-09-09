@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./CompletedChallenges.module.scss";
 
-const CompletedChallenges = () => {
+const CompletedChallenges = ({ doneIdeas }) => {
   return (
     <section className={styles.container}>
       <h2 className={styles.heading}>Completed challenges</h2>
@@ -16,30 +16,20 @@ const CompletedChallenges = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>How to find a job....</td>
-              <td>Education</td>
-              <td>Last week</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>How to find a job....</td>
-              <td>Education</td>
-              <td>Last week</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>How to find a job....</td>
-              <td>Education</td>
-              <td>Last week</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>How to find a job....</td>
-              <td>Education</td>
-              <td>Last week</td>
-            </tr>
+            {doneIdeas.length === 0 ? (
+              <tr>
+                <td colSpan={4}>No done ideas yet</td>
+              </tr>
+            ) : (
+              doneIdeas.map((idea, index) => (
+                <tr key={idea.key}>
+                  <td>{index + 1}</td>
+                  <td>{idea.activity}</td>
+                  <td>{idea.type}</td>
+                  <td>Last week</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
