@@ -19,7 +19,7 @@ function App() {
   const addTaskToList = (taskKey) => {
     ideas.map((idea, i) => {
       if (taskKey === idea.key) {
-        setMyIdeas([...myIdeas, {...idea, isDone: false, isCurrent: false}]);
+        setMyIdeas([...myIdeas, {...idea, isDone: false, isCurrent: myIdeas.length === 0 ? true : false}]);
         ideas.splice(i, 1);
       }
       return ideas
