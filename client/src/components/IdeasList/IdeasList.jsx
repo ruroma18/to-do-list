@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import IdeaCard from "../IdeaCard/IdeaCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -6,10 +6,11 @@ import "slick-carousel/slick/slick-theme.css";
 import styles from "./IdeasList.module.scss";
 import "./slider.css";
 
-const IdeasList = ({ myIdeas, setMyIdeas }) => {
-
+const IdeasList = ({ myIdeas, setMyIdeas, setTaskDone }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
-  
+
+  const toggleTaskIsDone = (key) => setTaskDone(key);
+
   const changeVisability = (current) => {
     const newMyIdeas = myIdeas.map((idea, index) => ({
       ...idea,
@@ -26,7 +27,10 @@ const IdeasList = ({ myIdeas, setMyIdeas }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    afterChange: (current) => [changeVisability(current), setCurrentSlideIndex(current + 1)],
+    afterChange: (current) => [
+      changeVisability(current),
+      setCurrentSlideIndex(current + 1),
+    ],
   };
 
   return (
@@ -38,16 +42,21 @@ const IdeasList = ({ myIdeas, setMyIdeas }) => {
         ) : (
           <>
             <Slider {...slideSetting}>
-              {myIdeas.map((idea) => (
-                <IdeaCard
-                  key={idea.key}
-                  task={idea.activity}
-                  type={idea.type}
-                  isCurrent={idea.isCurrent}
-                />
-              ))}
+              {myIdeas.map((idea) =>
+                idea.isDone === false ? 
+                  <div key={idea.key} onClick={() => toggleTaskIsDone(idea.key)}>
+                    <IdeaCard
+                      task={idea.activity}
+                      type={idea.type}
+                      isCurrent={idea.isCurrent}
+                    />
+                  </div>
+                : false
+              )}
             </Slider>
-            <div className={styles.sliderPagination}>{` ${currentSlideIndex} / ${myIdeas.length}`}</div>
+            <div
+              className={styles.sliderPagination}
+            >{` ${currentSlideIndex} / ${myIdeas.length}`}</div>
           </>
         )}
       </div>

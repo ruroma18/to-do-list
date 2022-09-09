@@ -9,6 +9,7 @@ import IdeasList from "./components/IdeasList/IdeasList";
 function App() {
   const [ideas, setIdeas] = useState([]);
   const [myIdeas, setMyIdeas] = useState([]);
+  const [doneIdeas, setDoneIdeas] = useState([]);
 
   useEffect(() => {
     if (ideas.length < 4) {
@@ -26,12 +27,22 @@ function App() {
     });
   };
 
+  const setTaskDone = (taskKey) => {
+    myIdeas.map((idea, i) => {
+      if (taskKey === idea.key) {
+        setDoneIdeas([...doneIdeas, idea]);
+        myIdeas.splice(i, 1);
+      }
+      return myIdeas
+    });
+  };
+
   return (
     <div className={styles.container}>
       <FreshIdeas ideas={ideas} addTaskToList={addTaskToList} />
-      <IdeasList myIdeas={myIdeas} setMyIdeas={setMyIdeas} />
-      <Achievements />
-      <CompletedChallenges />
+      <IdeasList myIdeas={myIdeas} setMyIdeas={setMyIdeas} setTaskDone={setTaskDone} />
+      <Achievements doneIdeas={doneIdeas}/>
+      <CompletedChallenges doneIdeas={doneIdeas}/>
     </div>
   );
 }
