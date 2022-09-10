@@ -43,20 +43,25 @@ const IdeasList = ({ myIdeas, setMyIdeas, setTaskDone }) => {
           <>
             <Slider {...slideSetting}>
               {myIdeas.map((idea) =>
-                idea.isDone === false ? 
-                  <div key={idea.key} onClick={() => toggleTaskIsDone(idea.key)}>
+                idea.isDone === false ? (
+                  <div
+                    key={idea.key}
+                    onClick={() => toggleTaskIsDone(idea.key)}
+                  >
                     <IdeaCard
                       task={idea.activity}
                       type={idea.type}
                       isCurrent={idea.isCurrent}
                     />
                   </div>
-                : false
+                ) : (
+                  false
+                )
               )}
             </Slider>
-            <div
-              className={styles.sliderPagination}
-            >{` ${currentSlideIndex} / ${myIdeas.length}`}</div>
+            <div className={styles.sliderPagination}>{` ${
+              myIdeas.length === 1 ? 1 : currentSlideIndex
+            } / ${myIdeas.length}`}</div>
           </>
         )}
       </div>
