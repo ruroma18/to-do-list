@@ -56,10 +56,22 @@ function App() {
 
   const setTaskDone = (taskKey) => {
     myIdeas.map((idea, i) => {
-      if (taskKey === idea.key) {
-        setDoneIdeas((prevState) => [...prevState, {...idea, date: Date.now()}]);
+      if (taskKey === idea.key && idea.isCurrent === true) {
+        setDoneIdeas((prevState) => [
+          ...prevState,
+          { ...idea, date: Date.now() },
+        ]);
         countAchievements(idea);
+
         myIdeas.splice(i, 1);
+
+        if (i === myIdeas.length && myIdeas.length >= 2) {
+          return (myIdeas[i - 1].isCurrent = true);
+        } else if (myIdeas.length === 1) {
+          return (myIdeas[0].isCurrent = true);
+        } else if (myIdeas.length !== 0) {
+          myIdeas[i].isCurrent = true;
+        }
       }
       return myIdeas;
     });
