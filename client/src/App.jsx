@@ -12,11 +12,20 @@ function App() {
   const [doneIdeas, setDoneIdeas] = useState([]);
   const [achievements, setAchievements] = useState([]);
 
+  const checkIsExist = (data) => {
+    const existIdea = ideas.find((idea) => idea.key === data.key)
+    if (!existIdea) {
+      return data
+    }
+  }
+  
   useEffect(() => {
     if (ideas.length < 4) {
-      getTask().then((data) => setIdeas([...ideas, data]));
+      getTask().then((data) => setIdeas([...ideas, checkIsExist(data)]));
     }
-  }, [ideas.length, ideas]);
+  }, [ideas.length]);
+
+
 
   const addTaskToList = (taskKey) => {
     ideas.map((idea, i) => {
