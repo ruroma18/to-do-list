@@ -57,7 +57,7 @@ function App() {
   const setTaskDone = (taskKey) => {
     myIdeas.map((idea, i) => {
       if (taskKey === idea.key) {
-        setDoneIdeas((prevState) => [...prevState, idea]);
+        setDoneIdeas((prevState) => [...prevState, {...idea, date: Date.now()}]);
         countAchievements(idea);
         myIdeas.splice(i, 1);
       }
