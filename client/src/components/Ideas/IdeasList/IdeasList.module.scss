@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 50px;
+  background-color: #a4c3b2;
+}
+
+.heading {
+  font-size: 2em;
+  color: #f6fff8;
+}
+
+.sliderWrapper {
+  width: 80%;
+}
+
+.noCards {
+  display: flex;
+  justify-content: center;
+  color: #fefae0;
+  font-style: italic;
+}
+
+.sliderPagination {
+  display: flex;
+  justify-content: center;
+}

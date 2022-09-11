@@ -1,0 +1,20 @@
+.slick-track {
+  height: 150px;
+}
+
+.slick-slide div {
+  margin-left: 20px;
+  width: 300px;
+}
+
+.slick-current div div div {
+  width: 300px;
+  height: 130px;
+  margin-right: 20px;
+  background-color: #eaf4f4;
+}
+
+.slick-current div p {
+  font-weight: 600;
+  color: #6b9080;
+}
