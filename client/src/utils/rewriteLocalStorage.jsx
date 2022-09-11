@@ -1,7 +1,10 @@
-export default function rewritreLocalStorage(key, value) {
+export default function rewritreLocalStorage(key, state) {
   localStorage.removeItem(key);
-  return localStorage.setItem(
-    key,
-    JSON.stringify([...JSON.parse(localStorage.getItem(key) || "[]"), value])
-  );
+  state.map((item) => {
+    return localStorage.setItem(
+      key,
+      JSON.stringify([...JSON.parse(localStorage.getItem(key) || "[]"), item])
+    );
+  })
+  
 }
