@@ -25,7 +25,7 @@ const IdeasList = ({
               (item) => item.type === idea.type ? { ...item, count: item.count + 1 } : item
           )
       )
-      rewritreLocalStorage("achievements", achievements)
+      return rewritreLocalStorage("achievements", achievements)
   }
       const newAchievement = { type: idea.type, count: 1 };
       setAchievements((prevState) => [...prevState, newAchievement]);
