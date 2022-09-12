@@ -1,0 +1,23 @@
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: #eaf4f4;
+  width: 100%;
+}
+
+.btn {
+  margin: 5px;
+  padding: 20px 50px;
+  border: 2px solid #6b9080;
+  background-color: #6b9080;
+  color: #eaf4f4;
+  font-size: 1.1em;
+  transition: background-color, 0.4s, ease;
+
+  &:hover {
+    background-color: #eaf4f4;
+    color: #6b9080;
+  }
+}
+
