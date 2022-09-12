@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useEffect, useState } from "react";
 import { getTask } from "../../api";
 import getDataFromLocalStorage from "../../utils/getLocalStorage";
@@ -7,6 +7,7 @@ import CompletedChallenges from "./CompletedChallenges/CompletedChallenges";
 import FreshIdeas from "./FreshIdeas/FreshIdeas";
 import IdeasList from "./IdeasList/IdeasList";
 import styles from "./Ideas.module.scss";
+import IdeasButtons from "./IdeasButtons/IdeasButtons";
 
 const Ideas = () => {
   const [ideas, setIdeas] = useState([]);
@@ -34,7 +35,6 @@ const Ideas = () => {
       getTask().then((data) => setIdeas([...ideas, checkIsExist(data)]));
     }
   }, [ideas.length]);
-  
 
   return (
     <div className={styles.container}>
@@ -42,14 +42,22 @@ const Ideas = () => {
       <IdeasList
         myIdeas={myIdeas}
         setMyIdeas={setMyIdeas}
-        achievements={achievements} 
+        achievements={achievements}
         setAchievements={setAchievements}
         setDoneIdeas={setDoneIdeas}
       />
       <Achievements achievements={achievements} />
       <CompletedChallenges doneIdeas={doneIdeas} />
+      <IdeasButtons
+        setMyIdeas={setMyIdeas}
+        myIdeas={myIdeas}
+        doneIdeas={doneIdeas}
+        achievements={achievements}
+        setAchievements={setAchievements}
+        setDoneIdeas={setDoneIdeas}
+      />
     </div>
   );
-}
+};
 
 export default Ideas;
