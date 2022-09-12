@@ -20,12 +20,12 @@ const Ideas = () => {
     ...getDataFromLocalStorage("achievements"),
   ]);
 
-  const checkIsExist = (data) => {
-    const existIdea = ideas.find((idea) => idea.key === data.key);
-    const existMyIdea = myIdeas.find((idea) => idea.key === data.key);
-    const existDoneIdea = doneIdeas.find((idea) => idea.key === data.key);
+  const checkIsExist = ({key, activity, type}) => {
+    const existIdea = ideas.find((idea) => idea.key === key);
+    const existMyIdea = myIdeas.find((idea) => idea.key === key);
+    const existDoneIdea = doneIdeas.find((idea) => idea.key === key);
     if (!existIdea && !existMyIdea && !existDoneIdea) {
-      return data;
+      return {key, activity, type};
     }
   };
 
