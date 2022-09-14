@@ -13,8 +13,7 @@ const IdeaSlider = ({setMyIdeas, myIdeas, setTaskDone}) => {
   const changeVisability = (current) => {
     const newMyIdeas = myIdeas.map((idea, index) => ({
       ...idea,
-      isCurrent:
-        index === current ? (idea.isCurrent = true) : (idea.isCurrent = false),
+      isCurrent: index === current,
     }));
     return setMyIdeas(newMyIdeas);
   };

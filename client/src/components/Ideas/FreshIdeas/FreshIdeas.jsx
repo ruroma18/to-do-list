@@ -11,7 +11,7 @@ const FreshIdeas = ({ ideas, myIdeas, setMyIdeas }) => {
         const newIdea = {
           ...idea,
           isDone: false,
-          isCurrent: myIdeas.length === 0 ? true : false,
+          isCurrent: !myIdeas.length,
         };
         setMyIdeas((prevState) => [...prevState, newIdea]);
         setDataToLocalStorage("myIdeas", newIdea);
